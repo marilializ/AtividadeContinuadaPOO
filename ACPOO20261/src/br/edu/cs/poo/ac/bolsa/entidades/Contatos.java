@@ -16,36 +16,16 @@ public class Contatos {
 	}
 	
 	//getters
-	public String getEmail() {
-		return email;
-	}
-	public String getTelefoneFixo() {
-		return telefoneFixo;
-	}
-	public String getTelefoneCelular() {
-		return telefoneCelular;
-	}
-	public String getNumeroWhatsApp() {
-		return numeroWhatsApp;
-	}
-	public String getNomeParaContato() {
-		return nomeParaContato;
-	}
+	public String getEmail() {return email;}
+	public String getTelefoneFixo() {return telefoneFixo;}
+	public String getTelefoneCelular() {return telefoneCelular;}
+	public String getNumeroWhatsApp() {return numeroWhatsApp;}
+	public String getNomeParaContato() {return nomeParaContato;}
 	
 	//setters
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public void setTelefoneFixo(String telefoneFixo) {
-		this.telefoneFixo = telefoneFixo;
-	}
-	public void setTelefoneCelular(String telefoneCelular) {
-		this.telefoneCelular = telefoneCelular;
-	}
-	public void setNumeroWhatsApp(String numeroWhatsApp) {
-		this.numeroWhatsApp = numeroWhatsApp;
-	}
-	public void setNomeParaContato(String nomeParaContato) {
-		this.nomeParaContato = nomeParaContato;
-	}
+	public void setEmail(String email) {this.email = email;}
+	public void setTelefoneFixo(String telefoneFixo) {this.telefoneFixo = telefoneFixo;}
+	public void setTelefoneCelular(String telefoneCelular) {this.telefoneCelular = telefoneCelular;}
+	public void setNumeroWhatsApp(String numeroWhatsApp) {this.numeroWhatsApp = numeroWhatsApp;}
+	public void setNomeParaContato(String nomeParaContato) {this.nomeParaContato = nomeParaContato;}
 }

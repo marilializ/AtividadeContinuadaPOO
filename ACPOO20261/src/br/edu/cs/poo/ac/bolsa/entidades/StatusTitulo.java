@@ -4,7 +4,6 @@ public enum StatusTitulo {
 	ATIVO(1,"Titulo ativo"),
 	CANCELADO(2, "Titulo cancelado"),
 	VENCIDO(3, "Titulo vencido");
-	
 	private int codigo;
 	private String descricao;
 	
@@ -14,13 +13,6 @@ public enum StatusTitulo {
 	}
 	
 	//getters
-	public int getCodigo() {
-		return codigo;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	
+	public int getCodigo() {return codigo;}
+	public String getDescricao() {return descricao;}
 }
-
-

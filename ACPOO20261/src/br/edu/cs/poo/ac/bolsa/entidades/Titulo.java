@@ -21,7 +21,6 @@ public class Titulo{
 					BigDecimal valorInvestido, BigDecimal valorAtual, BigDecimal taxaDiaria,
 					LocalDate dataAplicacao, LocalDate dataVencimento, LocalDate dataUltimoRendimento,
 					StatusTitulo status) {
-		
 		this.investidorPessoa = investidorPessoa;
 		this.investidorEmpresa = investidorEmpresa;
 		this.ativo = ativo;
@@ -62,29 +61,31 @@ public class Titulo{
 	public boolean render() {
 		LocalDate hoje = LocalDate.now();
 		
-		if (status == StatusTitulo.ATIVO && !hoje.isBefore(dataVencimento) &&
-				!hoje.isAfter(dataAplicacao) && !hoje.isAfter(dataUltimoRendimento)) {
-			long dias;
+		if (status != StatusTitulo.ATIVO) return false;
+		if (!hoje.isBefore(dataVencimento)) return false;
+		if (!hoje.isAfter(dataAplicacao)) return false;
+		if (dataUltimoRendimento != null && !hoje.isAfter(dataUltimoRendimento)) return false;
+		
+		long dias;
 			
-		    if (dataUltimoRendimento == null) {dias = ChronoUnit.DAYS.between(dataAplicacao, hoje);}
-		    else {dias = ChronoUnit.DAYS.between(dataUltimoRendimento, hoje);}
+		if (dataUltimoRendimento == null) {dias = ChronoUnit.DAYS.between(dataAplicacao, hoje);}
+		else {dias = ChronoUnit.DAYS.between(dataUltimoRendimento, hoje);}
 			
-			BigDecimal taxaDiariaSobre100 = taxaDiaria.divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
-			BigDecimal taxaDiariaSobre100Mais1 = taxaDiariaSobre100.add(BigDecimal.valueOf(1));
-			BigDecimal taxaDiariaSobre100Mais1ElevDD = taxaDiariaSobre100Mais1.pow((int)dias);
-			valorAtual = valorAtual.multiply(taxaDiariaSobre100Mais1ElevDD);
-			
-			return true;}
-		else {return false;}
+		BigDecimal taxaDiariaSobre100 = taxaDiaria.divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+		BigDecimal taxaDiariaSobre100Mais1 = taxaDiariaSobre100.add(BigDecimal.valueOf(1));
+		BigDecimal taxaDiariaSobre100Mais1ElevDD = taxaDiariaSobre100Mais1.pow((int)dias);
+		valorAtual = valorAtual.multiply(taxaDiariaSobre100Mais1ElevDD);
+		
+		dataUltimoRendimento = hoje;
+		return true;
 	}
 	
 	public String getNumero() {
 		String codigoAtivo = String.valueOf(ativo.getCodigo());
 	    String dataFormatada = dataAplicacao.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-	    if (investidorPessoa != null) {return "000" + investidorPessoa.getCPF() + codigoAtivo + dataFormatada;}
-	    else if (investidorEmpresa != null) {return investidorEmpresa.getCNPJ() + codigoAtivo + dataFormatada;}
-
+	    if (investidorPessoa != null) return "000" + investidorPessoa.getCpf() + codigoAtivo + dataFormatada + "0000";
+	    else if (investidorEmpresa != null) return investidorEmpresa.getCnpj() + codigoAtivo + dataFormatada + "0000";
 	    return null;
 	}
 }

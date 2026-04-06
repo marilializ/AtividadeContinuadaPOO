@@ -19,49 +19,31 @@ public class Investidor {
 	}
 	
 	//getters
-	public String getNome() {
-		return nome;
-	}
-	public Endereco getEndereco() {
-		return endereco;
-	}
-	public Contatos getContatos() {
-		return contatos;
-	}
-	public BigDecimal getBonus() {
-		return bonus;
-	}
-	
-	protected LocalDate getDataCriacao() {
-		return dataCriacao;
-	}
+	public String getNome() {return nome;}
+	public Endereco getEndereco() {return endereco;}
+	public Contatos getContatos() {return contatos;}
+	public BigDecimal getBonus() {return bonus;}
+	protected LocalDate getDataCriacao() {return dataCriacao;}
 	
 	public int getIdade() {
         Period periodo = Period.between(dataCriacao, LocalDate.now());
         int idade = periodo.getYears();
-        return idade;
-}
+        return idade;}
 	
 	//setters
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-	public void setContatos(Contatos contatos) {
-		this.contatos = contatos;
-	}
-	public void setDataCriacao(LocalDate dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
+	public void setNome(String nome) {this.nome = nome;}
+	public void setEndereco(Endereco endereco) {this.endereco = endereco;}
+	public void setContatos(Contatos contatos) {this.contatos = contatos;}
+	public void setDataCriacao(LocalDate dataCriacao) {this.dataCriacao = dataCriacao;}
 	
 	//other methods
 	public void creditarBonus(BigDecimal valor) {
-		bonus = bonus.add(valor);
+		if (valor != null) bonus = bonus.add(valor);
+		else return;
 	}
 	public void debitarBonus(BigDecimal valor) {
-		bonus = bonus.subtract(valor);
+		if (valor != null) bonus = bonus.subtract(valor);
+		else return;
 	}	
 	
 }
