@@ -18,21 +18,18 @@ public enum FaixaRenda {
 		this.valorFinal = valorFinal;
 	}
 	
+	//getters
 	public int getCodigo() {
 		return codigo;
 	}
-	
 	public String getDescricao() {
 		return descricao;
 	}
-	
 	public double getValorInicial() {
 		return valorInicial;
 	}
-	
 	public double getValorFinal() {
 		return valorFinal;
 	}
-	
 
 }

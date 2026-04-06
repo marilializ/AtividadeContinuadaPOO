@@ -18,6 +18,7 @@ public class Investidor {
 		this.contatos = contatos;
 	}
 	
+	//getters
 	public String getNome() {
 		return nome;
 	}
@@ -27,11 +28,21 @@ public class Investidor {
 	public Contatos getContatos() {
 		return contatos;
 	}
-	
 	public BigDecimal getBonus() {
 		return bonus;
 	}
 	
+	protected LocalDate getDataCriacao() {
+		return dataCriacao;
+	}
+	
+	public int getIdade() {
+        Period periodo = Period.between(dataCriacao, LocalDate.now());
+        int idade = periodo.getYears();
+        return idade;
+}
+	
+	//setters
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -41,33 +52,16 @@ public class Investidor {
 	public void setContatos(Contatos contatos) {
 		this.contatos = contatos;
 	}
-	
-	protected LocalDate getDataCriacao() {
-		return dataCriacao;
-	}
 	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 	
-	public int getIdade() {
-	        Period periodo = Period.between(dataCriacao, LocalDate.now());
-	        int idade = periodo.getYears();
-	        return idade;
-	}
-	
+	//other methods
 	public void creditarBonus(BigDecimal valor) {
 		bonus = bonus.add(valor);
 	}
-	
 	public void debitarBonus(BigDecimal valor) {
 		bonus = bonus.subtract(valor);
-	}
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 }

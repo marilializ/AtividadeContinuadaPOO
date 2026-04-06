@@ -19,6 +19,7 @@ public class Endereco {
 		this.cidade = cidade;
 	}
 	
+	//getters
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -41,7 +42,7 @@ public class Endereco {
 		return cidade;
 	}
 	
-	
+	//setters
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
 	}

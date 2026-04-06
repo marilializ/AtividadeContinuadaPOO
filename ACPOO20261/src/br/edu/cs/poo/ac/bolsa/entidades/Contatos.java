@@ -15,6 +15,7 @@ public class Contatos {
 		this.nomeParaContato = nomeParaContato;
 	}
 	
+	//getters
 	public String getEmail() {
 		return email;
 	}
@@ -31,6 +32,7 @@ public class Contatos {
 		return nomeParaContato;
 	}
 	
+	//setters
 	public void setEmail(String email) {
 		this.email = email;
 	}
