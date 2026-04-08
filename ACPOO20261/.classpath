@@ -7,5 +7,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="lib/PersistenciaObjetos.jar"/>
+>>>>>>> branch 'main' of https://github.com/marilializ/AtividadePOO.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
