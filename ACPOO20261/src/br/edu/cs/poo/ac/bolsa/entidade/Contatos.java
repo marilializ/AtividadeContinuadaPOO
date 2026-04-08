@@ -11,6 +11,7 @@ public class Contatos implements Serializable {
 	private String numeroWhatsApp;
 	private String nomeParaContato;
 	
+	public Contatos() {}
 	public Contatos (String email, String telefoneFixo, String telefoneCelular, String numeroWhatsApp, String nomeParaContato) {
 		this.email = email;
 		this.telefoneFixo = telefoneFixo;
