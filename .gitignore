@@ -1,0 +1,47 @@
+# =========================
+# MAC
+# =========================
+.DS_Store
+
+# =========================
+# Eclipse
+# =========================
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# Eclipse Core
+.project
+.classpath
+
+# =========================
+# Java
+# =========================
+*.class
+*.log
+
+# =========================
+# Build / Output
+# =========================
+/bin/
+/target/
+/out/
+
+# =========================
+# IntelliJ (caso abra lá)
+# =========================
+.idea/
+*.iml
+
+# =========================
+# VS Code
+# =========================
+.vscode/
