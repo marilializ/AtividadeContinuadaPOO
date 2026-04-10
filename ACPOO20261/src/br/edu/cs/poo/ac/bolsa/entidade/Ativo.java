@@ -46,5 +46,5 @@ public class Ativo implements Serializable {
 	public void setTaxaMensalMinima(double taxaMensalMinima) {this.taxaMensalMinima = taxaMensalMinima;}
 	public void setTaxaMensalMaxima(double taxaMensalMaxima) {this.taxaMensalMaxima = taxaMensalMaxima;}
 	public void setFaixaMinimaPermitida(FaixaRenda faixaRenda) {this.faixaMinimaPermitida = faixaRenda;}
-	public void getPrazoEmMeses(int prazoEmMeses) {this.prazoEmMeses = prazoEmMeses;}
+	public void setPrazoEmMeses(int prazoEmMeses) {this.prazoEmMeses = prazoEmMeses;}
 }

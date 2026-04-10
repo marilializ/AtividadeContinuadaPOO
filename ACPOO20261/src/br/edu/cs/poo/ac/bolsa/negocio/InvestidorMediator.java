@@ -22,25 +22,20 @@ public class InvestidorMediator {
 	private MensagensValidacao validarEndereco(Endereco endereco) {
 	    MensagensValidacao msgs = new MensagensValidacao();
 
-	    if (endereco.getLogradouro() == null || endereco.getLogradouro().trim().isEmpty()) {
+	    if (endereco.getLogradouro() == null || endereco.getLogradouro().trim().isEmpty())
 	        msgs.adicionar("Logradouro é obrigatório.");
-	    }
 
-	    if (endereco.getNumero() == null || endereco.getNumero().trim().isEmpty()) {
+	    if (endereco.getNumero() == null || endereco.getNumero().trim().isEmpty())
 	        msgs.adicionar("Número é obrigatório.");
-	    }
 
-	    if (endereco.getPais() == null || endereco.getPais().trim().isEmpty()) {
+	    if (endereco.getPais() == null || endereco.getPais().trim().isEmpty())
 	        msgs.adicionar("País é obrigatório.");
-	    }
 
-	    if (endereco.getEstado() == null || endereco.getEstado().trim().isEmpty()) {
+	    if (endereco.getEstado() == null || endereco.getEstado().trim().isEmpty())
 	        msgs.adicionar("Estado é obrigatório.");
-	    }
 
-	    if (endereco.getCidade() == null || endereco.getCidade().trim().isEmpty()) {
+	    if (endereco.getCidade() == null || endereco.getCidade().trim().isEmpty())
 	        msgs.adicionar("Cidade é obrigatório.");
-	    }
 
 	    return msgs;
 	}
@@ -49,9 +44,10 @@ public class InvestidorMediator {
 	    MensagensValidacao msgs = new MensagensValidacao();
 
 	    // email
-	    if (contatos.getEmail() == null || contatos.getEmail().trim().isEmpty() || !contatos.getEmail().contains("@")) {
-	        msgs.adicionar("Email inválido.");
-	    }
+	    if (contatos.getEmail() == null ||
+	    	contatos.getEmail().trim().isEmpty() ||
+	    	!contatos.getEmail().contains("@")) {
+	    	msgs.adicionar("E-mail inválido.");}
 
 	    // telefones
 	    boolean temTelefone = false;
@@ -59,32 +55,23 @@ public class InvestidorMediator {
 	    if (contatos.getTelefoneFixo() != null && !contatos.getTelefoneFixo().isEmpty()) {
 	        temTelefone = true;
 	        if (!contatos.getTelefoneFixo().matches("\\d+")) {
-	            msgs.adicionar("Telefone fixo inválido.");
-	        }
+	            msgs.adicionar("Telefone fixo inválido.");}
 	    }
-
 	    if (contatos.getTelefoneCelular() != null && !contatos.getTelefoneCelular().isEmpty()) {
 	        temTelefone = true;
 	        if (!contatos.getTelefoneCelular().matches("\\d+")) {
-	            msgs.adicionar("Telefone celular inválido.");
-	        }
+	            msgs.adicionar("Telefone celular deve conter apenas números.");}
 	    }
-
 	    if (contatos.getNumeroWhatsApp() != null && !contatos.getNumeroWhatsApp().isEmpty()) {
 	        temTelefone = true;
 	        if (!contatos.getNumeroWhatsApp().matches("\\d+")) {
-	            msgs.adicionar("WhatsApp inválido.");
-	        }
+	            msgs.adicionar("WhatsApp inválido.");}
 	    }
-
-	    if (!temTelefone) {
-	        msgs.adicionar("Pelo menos um telefone deve ser informado.");
-	    }
-
+	    if (!temTelefone) msgs.adicionar("Pelo menos um telefone deve ser informado.");
 	    if (ehPessoaJuridica) {
-	        if (contatos.getNomeParaContato() == null || contatos.getNomeParaContato().trim().isEmpty()) {
-	            msgs.adicionar("Nome para contato é obrigatório.");
-	        }
+	        if (contatos.getNomeParaContato() == null ||
+	        	contatos.getNomeParaContato().trim().isEmpty()) {
+	            msgs.adicionar("Nome para contato é obrigatório para pessoa jurídica.");}
 	    }
 
 	    return msgs;
@@ -98,34 +85,27 @@ public class InvestidorMediator {
 	        return msgs;
 	    }
 
-	    if (dadosInv.getNome() == null || dadosInv.getNome().trim().isEmpty()) {
+	    if (dadosInv.getNome() == null || dadosInv.getNome().trim().isEmpty())
 	        msgs.adicionar("Nome é obrigatório.");
-	    }
 
 	    if (dadosInv.getEndereco() == null) {
 	        msgs.adicionar("Endereço é obrigatório.");
 	    } else {
 	        MensagensValidacao m = validarEndereco(dadosInv.getEndereco());
-	        for (String s : m.getMensagens()) {
-	            msgs.adicionar(s);
-	        }
+	        for (String s : m.getMensagens()) msgs.adicionar(s);
 	    }
 
-	    if (dadosInv.getDataCriacao() == null || dadosInv.getDataCriacao().isAfter(java.time.LocalDate.now())) {
+	    if (dadosInv.getDataCriacao() == null || dadosInv.getDataCriacao().isAfter(java.time.LocalDate.now()))
 	        msgs.adicionar("Data inválida.");
-	    }
 
-	    if (dadosInv.getBonus() == null || dadosInv.getBonus().doubleValue() < 0) {
+	    if (dadosInv.getBonus() == null || dadosInv.getBonus().doubleValue() < 0)
 	        msgs.adicionar("Bônus inválido.");
-	    }
 
 	    if (dadosInv.getContatos() == null) {
 	        msgs.adicionar("Contatos é obrigatório.");
 	    } else {
 	        MensagensValidacao m = validarContatos(dadosInv.getContatos(), dadosInv.ehInvestidorEmpresa());
-	        for (String s : m.getMensagens()) {
-	            msgs.adicionar(s);
-	        }
+	        for (String s : m.getMensagens()) msgs.adicionar(s);
 	    }
 
 	    return msgs;
@@ -138,13 +118,9 @@ public class InvestidorMediator {
 	    msgs = validar(dados);
 
 	    ResultadoValidacao res = ValidadorCpfCnpj.validarCnpj(ie.getCnpj());
-	    if (res != null) {
-	        msgs.adicionar("CNPJ inválido.");
-	    }
+	    if (res != null) msgs.adicionar("CNPJ inválido.");
 
-	    if (ie.getFaturamento() < 100000.0) {
-	        msgs.adicionar("Faturamento deve ser maior ou igual a 100000.0.");
-	    }
+	    if (ie.getFaturamento() < 100000.0) msgs.adicionar("Faturamento deve ser maior ou igual a 100000.0.");
 
 	    return msgs;
 	}
@@ -156,24 +132,16 @@ public class InvestidorMediator {
 	    msgs = validar(dados);
 
 	    ResultadoValidacao res = ValidadorCpfCnpj.validarCpf(ip.getCpf());
-	    if (res != null) {
-	        msgs.adicionar("CPF inválido.");
-	    }
+	    if (res != null) msgs.adicionar("CPF inválido.");
 
-	    if (ip.getRenda() < 10000.0) {
-	        msgs.adicionar("Renda deve ser maior ou igual a 10000.0.");
-	    }
+	    if (ip.getRenda() < 10000.0) msgs.adicionar("Renda deve ser maior ou igual a 10000.0.");
 
 	    // SETAR FAIXA
 	    double renda = ip.getRenda();
 
-	    if (renda >= 300000.01) {
-	        ip.setFaixaRenda(FaixaRenda.PREMIUM);
-	    } else if (renda >= 5000.01) {
-	        ip.setFaixaRenda(FaixaRenda.DIFERENCIADA);
-	    } else {
-	        ip.setFaixaRenda(FaixaRenda.REGULAR);
-	    }
+	    if (renda >= 300000.01) ip.setFaixaRenda(FaixaRenda.PREMIUM);
+	    else if (renda >= 5000.01) ip.setFaixaRenda(FaixaRenda.DIFERENCIADA);
+	    else ip.setFaixaRenda(FaixaRenda.REGULAR);
 
 	    return msgs;
 	}
