@@ -122,7 +122,7 @@ public class InvestidorMediator {
 	    if (dadosInv.getContatos() == null) {
 	        msgs.adicionar("Contatos é obrigatório.");
 	    } else {
-	        MensagensValidacao m = validarContatos(dadosInv.getContatos(), dadosInv.getInvestidorEmpresa() != null);
+	        MensagensValidacao m = validarContatos(dadosInv.getContatos(), dadosInv.ehInvestidorEmpresa());
 	        for (String s : m.getMensagens()) {
 	            msgs.adicionar(s);
 	        }
@@ -182,7 +182,7 @@ public class InvestidorMediator {
 	    MensagensValidacao msgs = validarInvestidorEmpresa(ie);
 
 	    if (msgs.estaVazio()) {
-	        if (!daoInvEmp.incluirInvestidorEmpresa(ie)) {
+	        if (!daoInvEmp.incluir(ie)) {
 	            msgs.adicionar("Investidor Empresa já existente.");
 	        }
 	    }
@@ -194,7 +194,7 @@ public class InvestidorMediator {
 	    MensagensValidacao msgs = validarInvestidorEmpresa(ie);
 
 	    if (msgs.estaVazio()) {
-	        if (!daoInvEmp.alterarInvestidorEmpresa(ie)) {
+	        if (!daoInvEmp.alterar(ie)) {
 	            msgs.adicionar("Investidor Empresa não existente.");
 	        }
 	    }
@@ -210,7 +210,7 @@ public class InvestidorMediator {
 	        return msgs;
 	    }
 
-	    if (!daoInvEmp.excluirInvestidorEmpresa(cnpj)) {
+	    if (!daoInvEmp.excluir(cnpj)) {
 	        msgs.adicionar("Investidor Empresa não existente.");
 	    }
 
@@ -222,7 +222,7 @@ public class InvestidorMediator {
 	        return null;
 	    }
 
-	    return daoInvEmp.buscarInvestidorEmpresa(cnpj);
+	    return daoInvEmp.buscar(cnpj);
 	}
 	
 	public MensagensValidacao incluirInvestidorPessoa(InvestidorPessoa ip) {
@@ -257,7 +257,7 @@ public class InvestidorMediator {
 	        return msgs;
 	    }
 
-	    if (!daoInvPes.excluir(Long.parseLong(cpf))) {
+	    if (!daoInvPes.excluir(cpf)) {
 	        msgs.adicionar("Investidor Pessoa não existente.");
 	    }
 
