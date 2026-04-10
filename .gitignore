@@ -45,3 +45,10 @@ local.properties
 # VS Code
 # =========================
 .vscode/
+
+# =========================
+# Testes
+# =========================
+Ativo/
+InvestidorPessoa/
+InvestidorEmpresa/
