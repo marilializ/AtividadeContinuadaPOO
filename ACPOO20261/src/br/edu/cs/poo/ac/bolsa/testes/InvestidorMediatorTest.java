@@ -1,10 +1,8 @@
 package br.edu.cs.poo.ac.bolsa.testes;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import br.edu.cesarschool.next.oo.persistenciaobjetos.CadastroObjetos;
 import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorEmpresa;
 import br.edu.cs.poo.ac.bolsa.dao.DAOInvestidorPessoa;
@@ -14,21 +12,16 @@ import br.edu.cs.poo.ac.bolsa.entidade.InvestidorEmpresa;
 import br.edu.cs.poo.ac.bolsa.entidade.InvestidorPessoa;
 import br.edu.cs.poo.ac.bolsa.negocio.InvestidorMediator;
 import br.edu.cs.poo.ac.bolsa.util.MensagensValidacao;
-
 import java.io.File;
 import java.time.LocalDate;
 
-
 public class InvestidorMediatorTest extends TesteGenerico {
-
     private InvestidorMediator mediator;
-
     private CadastroObjetos cadEmp;
     private CadastroObjetos cadPes;
 
     @BeforeEach
     void setup() {
-
         cadEmp = new CadastroObjetos(InvestidorEmpresa.class);
         cadPes = new CadastroObjetos(InvestidorPessoa.class);
         mediator = new InvestidorMediator();

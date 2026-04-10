@@ -26,7 +26,7 @@ public class Endereco implements Serializable {
 	
 	//getters
 	public String getLogradouro() {return logradouro;}
-	public String getCEP() {return cep;}
+	public String getCep() {return cep;}
 	public String getNumero() {return numero;}
 	public String getComplemento() {return complemento;}
 	public String getPais() {return pais;}
@@ -35,11 +35,10 @@ public class Endereco implements Serializable {
 	
 	//setters
 	public void setLogradouro(String logradouro) {this.logradouro = logradouro;}
-	public void setCEP(String cep) {this.cep = cep;}
+	public void setCep(String cep) {this.cep = cep;}
 	public void setNumero(String numero) {this.numero = numero;}
 	public void setComplemento(String complemento) {this.complemento = complemento;}
 	public void setPais(String pais) {this.pais = pais;}
 	public void setEstado(String estado) {this.estado = estado;}
 	public void setCidade(String cidade) {this.cidade = cidade;}
-	
 }
